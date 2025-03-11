@@ -1,23 +1,13 @@
-const fs = require('fs');
+// cli.test.js
 const { execSync } = require('child_process');
 
-describe('Motivational Quote CLI', () => {
-  beforeAll(() => {
-    // Create a temporary quotes.json file for testing
-    fs.writeFileSync('quotes.json', JSON.stringify([
-      "Test quote 1.",
-      "Test quote 2.",
-      "Test quote 3."
-    ]));
-  });
-
-  afterAll(() => {
-    // Clean up the temporary quotes.json file
-    fs.unlinkSync('quotes.json');
-  });
-
-  test('prints a random quote', () => {
-    const output = execSync('./cli.js').toString().trim();
-    expect(["Test quote 1.", "Test quote 2.", "Test quote 3."]).toContain(output);
-  });
+test('prints a random quote', () => {
+  const output = execSync('node cli.js').toString().trim();
+  const expectedQuotes = [
+    "Test quote 1.",
+    "Test quote 2.",
+    "Test quote 3."
+  ];
+  // Check if the output is one of the expected quotes
+  expect(expectedQuotes).toContain(output);
 });
