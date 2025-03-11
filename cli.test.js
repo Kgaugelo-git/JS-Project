@@ -17,7 +17,7 @@ describe('Motivational Quote CLI', () => {
   });
 
   test('prints a random quote', () => {
-    const output = execSync('./index.js').toString().trim();
+    const output = execSync('./cli.js').toString().trim();
     expect(["Test quote 1.", "Test quote 2.", "Test quote 3."]).toContain(output);
   });
 });
